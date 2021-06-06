@@ -7,7 +7,7 @@ require "./year"
 require "./month"
 
 class Calendar
-  WEEK = %w[日 月 火 水 木 金 土]
+  WEEK = %w[日 月 火 水 木 金 土].freeze
   MIN_WEEK_INDEX = 0
   MAX_WEEK_INDEX = 6
   MAX_DIGIT = 2
@@ -67,5 +67,3 @@ begin
 rescue => error
   puts error
 end
-
-
