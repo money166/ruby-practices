@@ -3,8 +3,8 @@
 
 require "optparse"
 require "date"
-require "./year"
-require "./month"
+require_relative "year"
+require_relative "month"
 
 class Calendar
   WEEK = %w[日 月 火 水 木 金 土].freeze
