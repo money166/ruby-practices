@@ -55,8 +55,8 @@ class Calendar
 end
 
 opt = ARGV.getopts("m:", "y:")
-input_year = opt["y"].to_i == 0 ? Date.today.year : opt["y"].to_i
-input_month = opt["m"].to_i == 0 ? Date.today.month : opt["m"].to_i
+input_year = opt["y"]&.to_i || Date.today.year
+input_month = opt["m"]&.to_i || Date.today.month
 
 begin
   year = Year.new(input_year)
