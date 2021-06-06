@@ -11,7 +11,6 @@ class Calendar
   MIN_WEEK_INDEX = 0
   MAX_WEEK_INDEX = 6
   MAX_DIGIT = 2
-  attr_reader :year, :month
 
   def initialize(year, month)
     @year = year
