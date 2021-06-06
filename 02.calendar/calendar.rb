@@ -8,7 +8,6 @@ require "./month"
 
 class Calendar
   WEEK = %w[日 月 火 水 木 金 土]
-  SPACE_SIZE = 2
   MIN_WEEK_INDEX = 0
   MAX_WEEK_INDEX = 6
   MAX_DIGIT = 2
@@ -27,8 +26,8 @@ class Calendar
   private
 
   def print_header
-    puts "#{@month.value}月#{@year.value}".center((SPACE_SIZE * 2) * MAX_WEEK_INDEX)
-    puts WEEK.join("  ")
+    puts "#{@month.value}月#{@year.value}".center(MAX_WEEK_INDEX * 3)
+    puts WEEK.join(" ")
   end
 
   ## TODO:ここもう少しきれいにかけそうなきがする。week_indexのインクリメントが分かりづらい
@@ -36,13 +35,12 @@ class Calendar
     first_day = Date.new(@year.value, @month.value, 1)
     last_day = Date.new(@year.value, @month.value, -1)
 
-    # TODO: 2がマジックナンバーだが表現に困ったため現状このまま
-    # 曜日に対して2スペース 曜日と曜日の間隔で2スペース使用している
-    print " " * SPACE_SIZE * 2 * first_day.wday
+    # 曜日と曜日とその間隔で3スペース使用している
+    print "   " * first_day.wday
     week_index = first_day.wday
     (1..last_day.mday).each do |day|
-      # (" " * SPACE_SIZE)は曜日と曜日の間隔で2スペース
-      print day.to_s.rjust(MAX_DIGIT).to_s + (" " * SPACE_SIZE)
+      # (" " * SPACE_SIZE)は曜日と曜日の間隔で1スペース
+      print day.to_s.rjust(MAX_DIGIT).to_s + " "
       if is_week_end?(week_index)
         week_index = MIN_WEEK_INDEX
         print "\n"
