@@ -7,7 +7,7 @@ require_relative "year"
 require_relative "month"
 
 class Calendar
-  WEEK = %w[日 月 火 水 木 金 土].freeze
+  WEEK = %w[Su Mo Tu We Th Fr Sa].freeze
   MAX_WEEK_INDEX = 6
   MAX_DIGIT = 2
 
@@ -24,7 +24,7 @@ class Calendar
   private
 
   def print_header
-    puts "#{@month.value}月#{@year.value}".center(MAX_WEEK_INDEX * 3)
+    puts "#{@month.value}月#{@year.value}".center(WEEK.size * MAX_DIGIT + (WEEK.size - 1))
     puts WEEK.join(" ")
   end
 
