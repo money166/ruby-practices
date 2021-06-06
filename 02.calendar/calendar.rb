@@ -8,7 +8,6 @@ require_relative "month"
 
 class Calendar
   WEEK = %w[日 月 火 水 木 金 土].freeze
-  MIN_WEEK_INDEX = 0
   MAX_WEEK_INDEX = 6
   MAX_DIGIT = 2
 
@@ -29,28 +28,19 @@ class Calendar
     puts WEEK.join(" ")
   end
 
-  ## TODO:ここもう少しきれいにかけそうなきがする。week_indexのインクリメントが分かりづらい
   def print_weeks
     first_day = Date.new(@year.value, @month.value, 1)
     last_day = Date.new(@year.value, @month.value, -1)
 
     # 曜日と曜日とその間隔で3スペース使用している
     print "   " * first_day.wday
-    week_index = first_day.wday
-    (1..last_day.mday).each do |day|
+    (first_day..last_day).each do |day|
       # (" " * SPACE_SIZE)は曜日と曜日の間隔で1スペース
-      print day.to_s.rjust(MAX_DIGIT).to_s + " "
-      if is_week_end?(week_index)
-        week_index = MIN_WEEK_INDEX
+      print day.mday.to_s.rjust(MAX_DIGIT).to_s + " "
+      if day.saturday?
         print "\n"
-      else
-        week_index += 1
       end
     end
-  end
-
-  def is_week_end?(week_index)
-    week_index == MAX_WEEK_INDEX
   end
 end
 
