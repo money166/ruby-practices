@@ -51,8 +51,10 @@ input_month = opt["m"]&.to_i || Date.today.month
 begin
   year = Year.new(input_year)
   month = Month.new(input_month)
-  calendar = Calendar.new(year, month)
-  calendar.show
 rescue => error
   puts error
+  exit
 end
+
+calendar = Calendar.new(year, month)
+calendar.show
