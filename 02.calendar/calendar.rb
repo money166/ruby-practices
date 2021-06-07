@@ -36,7 +36,7 @@ class Calendar
     print "   " * first_day.wday
     (first_day..last_day).each do |day|
       # (" " * SPACE_SIZE)は曜日と曜日の間隔で1スペース
-      print day.mday.to_s.rjust(MAX_DIGIT).to_s + " "
+      print day.mday.to_s.rjust(MAX_DIGIT) + " "
       if day.saturday?
         print "\n"
       end
