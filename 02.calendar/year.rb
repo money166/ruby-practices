@@ -8,7 +8,7 @@ class Year
     @value = year
   end
 
-  def validate
+  def valid?
     # calコマンドとしての制限ではないが最小の仕様
     # 少なくとも1970年から2100年までは正しく表示されるに合わせている
     if @value < 1970 || @value > 2100

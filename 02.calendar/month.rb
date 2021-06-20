@@ -7,10 +7,7 @@ class Month
     @value = month
   end
 
-  def validate
-    unless MONTH.include?(@value)
-      return false
-    end
-    true
+  def valid?
+    MONTH.include?(@value)
   end
 end

@@ -49,13 +49,13 @@ input_year = opt["y"]&.to_i || Date.today.year
 input_month = opt["m"]&.to_i || Date.today.month
 
 year = Year.new(input_year)
-unless year.validate
+unless year.valid?
   puts "cal: year #{input_year} not in range 1970..2100"
   exit
 end
 
 month = Month.new(input_month)
-unless month.validate
+unless month.valid?
   puts "cal: #{input_month} is neither a month number (1..12) nor a name"
   exit
 end
