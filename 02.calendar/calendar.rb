@@ -48,11 +48,15 @@ opt = ARGV.getopts("m:", "y:")
 input_year = opt["y"]&.to_i || Date.today.year
 input_month = opt["m"]&.to_i || Date.today.month
 
-begin
-  year = Year.new(input_year)
-  month = Month.new(input_month)
-rescue => error
-  puts error
+year = Year.new(input_year)
+unless year.validate
+  puts "cal: year #{input_year} not in range 1970..2100"
+  exit
+end
+
+month = Month.new(input_month)
+unless month.validate
+  puts "cal: #{input_month} is neither a month number (1..12) nor a name"
   exit
 end
 
